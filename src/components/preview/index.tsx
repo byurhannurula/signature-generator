@@ -19,8 +19,8 @@ const Preview = ({ control }) => {
         className="h-[50%] w-full"
         srcDoc={template}
       />
-      <br />
-      <pre>{JSON.stringify(template, null, 4)}</pre>
+      {/* <br />
+      <pre>{JSON.stringify(template, null, 4)}</pre> */}
     </>
   );
 };
