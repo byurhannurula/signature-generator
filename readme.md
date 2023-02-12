@@ -1,1 +1,1 @@
-# recheck-signature-generator
+# signature-generator
