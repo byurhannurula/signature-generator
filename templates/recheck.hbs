@@ -36,7 +36,8 @@
                                 {{/if}}
                               </span>
                             </td>
-                            {{#if phoneNumber }}
+                            
+                            {{!-- Vertical Delimiter --}}
                             <td width="30">
                                 <div style="width:30px"></div>
                             </td>
@@ -44,7 +45,7 @@
                             <td width="30">
                                 <div style="width:30px"></div>
                             </td>
-                            {{/if}}
+                            
                             <td>
                                 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                                     <tbody>
@@ -131,8 +132,7 @@
             </td>
         </tr>
 
-        {{!-- Delimiter --}}
-        {{#if companyLogo }}
+        {{!-- Horizontal Delimiter --}}
         <tr>
             <td>
                 <table cellpadding="0" cellspacing="0" style="width:100%;vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
@@ -150,7 +150,6 @@
                 </table>
             </td>
         </tr>
-        {{/if}}
 
         {{!-- Social media --}}
         <tr>
