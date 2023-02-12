@@ -1,0 +1,28 @@
+.formGroup {
+  @apply flex flex-col mb-3;
+  width: inherit;
+}
+
+.formGroup > label {
+  /* @apply text-xs select-none text-gray-400; */
+}
+
+.formGroup > input {
+  @apply
+  py-1.5
+  px-3
+  mt-1
+  block
+  w-full
+  border
+  text-base
+  shadow-sm
+  rounded-md
+  border-gray-300
+  focus:outline-none
+  disabled:bg-gray-50
+  disabled:text-gray-500;
+
+  transition: all 150ms ease-in-out;
+}
+

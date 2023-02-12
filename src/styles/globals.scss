@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { 
+  @apply h-screen;
+}
+
+body {
+  @apply mx-auto w-screen bg-gray-100 text-black;
+}
+
+.formGroup {
+  @apply flex flex-col;
+}
+
+.inputHeader {
+  @apply flex items-center justify-between;
+
+  span {
+    @apply flex items-center;
+
+    svg {
+      @apply w-4 h-4 ml-1.5 text-gray-400;
+    }
+  }
+
+  p {
+    @apply text-red-600 text-xs mb-0;
+  }
+}
+
+
+.field {
+  @apply
+  py-2.5
+  px-3
+  block
+  w-full
+  border
+  text-sm
+  font-medium
+  shadow-sm
+  rounded-md
+  text-gray-800
+  border-gray-200
+  disabled:bg-gray-50
+  disabled:text-gray-500
+  transition-all
+  duration-150
+  ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.inputIcon + input {
+  @apply pl-10;
+}
+.btn {
+  @apply inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none;
+}
