@@ -1,4 +1,5 @@
 import '@/styles/globals.scss';
+import '@/styles/prism-atom-dark.scss';
 
 import Head from 'next/head';
 import Router from 'next/router';

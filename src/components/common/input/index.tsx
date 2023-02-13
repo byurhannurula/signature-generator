@@ -37,12 +37,31 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
       )}
 
-      <input
-        id={props.name}
-        {...props}
-        ref={ref}
-        className={cn('field', props.className)}
-      />
+      {!icon && props.prefix && (
+        <div className="mt-1 flex rounded-md shadow-sm">
+          <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">
+            {props.prefix}
+          </span>
+          <input
+            id={props.name}
+            {...props}
+            ref={ref}
+            className={cn(
+              'py-2.5 px-3 text-sm text-gray-800 border-gray-200 font-medium shadow-sm block w-full flex-1 rounded-none rounded-r-md',
+              props.className,
+            )}
+          />
+        </div>
+      )}
+
+      {!props.prefix && (
+        <input
+          id={props.name}
+          {...props}
+          ref={ref}
+          className={cn('field', props.className)}
+        />
+      )}
     </div>
   ),
 );

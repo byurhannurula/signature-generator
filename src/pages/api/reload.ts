@@ -1,12 +1,10 @@
-/* eslint-disable eqeqeq, func-names */
-import handlebars from 'handlebars';
+// import handlebars from 'handlebars';
+import ejs from 'ejs';
 import { readFileSync } from 'fs';
 import MinifyHTML from 'html-minifier';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-handlebars.registerHelper('minify', (content, options) => {
-  const view = options.fn(content);
-
+function minify(view: string) {
   return MinifyHTML.minify(view, {
     collapseBooleanAttributes: true,
     collapseInlineTagWhitespace: true,
@@ -16,20 +14,21 @@ handlebars.registerHelper('minify', (content, options) => {
     removeCommentsFromCDATA: true,
     keepClosingSlash: true,
   });
-});
+}
 
 function loadTemplate(tplName: string) {
   const tpl = readFileSync(
-    `${process.cwd()}/templates/${tplName}.hbs`,
+    `${process.cwd()}/templates/${tplName}.ejs`,
     'utf-8',
   );
 
-  return handlebars.compile(tpl);
+  return tpl;
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const template = loadTemplate('recheck');
-  const html = template(JSON.parse(req.body));
+  // const html = handlebars.compile(template)(JSON.parse(req.body));
+  const html = ejs.render(template, JSON.parse(req.body));
 
-  res.status(200).json({ data: html });
+  res.status(200).json({ data: minify(html) });
 }

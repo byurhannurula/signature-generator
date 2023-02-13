@@ -1,4 +1,3 @@
-{{#minify this}}
 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
     <tbody>
         <tr>
@@ -6,63 +5,63 @@
                 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                     <tbody>
                         <tr>
-                            {{#if profilePicture}}
+                            <%if (profilePicture) {  %>
                             <td width="100" style="vertical-align:middle">
                               <span style="margin-right:20px;display:block">
-                                <img src="{{ profilePicture }}" role="presentation" width="100" style="max-width:100px;width:100px;height:100px;border-radius:200px;object-fit:cover;">
+                                <img src="<%= profilePicture %>" role="presentation" width="100" style="max-width:100px;width:100px;height:100px;border-radius:200px;object-fit:cover;">
                               </span>
                             </td>
-                            {{/if}}
+                            <% } %>
                             <td>
-                              {{#if fullName}}
+                              <%if (fullName) { %>
                               <h2 color="#000000" style="margin:0;font-size:16px;color:#000;font-weight:700;vertical-align: middle;">
-                                <span>{{ fullName }} {{#if pronouns}}<span style="font-size:14px;font-weight:400;color: #6b7280;">&nbsp;({{ pronouns }})</span>{{/if}}
+                                <span><%= fullName %> <%if (pronouns) { %><span style="font-size:14px;font-weight:400;color: #6b7280;">&nbsp;(<%= pronouns %>)</span><% } %>
                               </h2>
-                              {{/if}}
+                              <% } %>
                               <span style="display: inline-block;">
-                                {{#if role}}
+                                <%if (role) { %>
                                 <p color="#000000" font-size="medium" style="display: inline-block;margin:0;color:#000;font-size:14px;line-height:22px">
-                                    <span>{{ role }}</span>
+                                    <span><%= role %></span>
                                 </p>
-                                {{/if}}
-                                {{#if company}}
+                                <% } %>
+                                <%if (company) { %>
                                 <p color="#000000" font-size="medium" style="display:inline-block;margin:0;font-weight:500;color:#000;font-size:14px;line-height:22px">
-                                    {{#if companyWebsite}}
-                                    &nbsp;&bull;&nbsp;<a href="{{ companyWebsite }}" target="_blank" rel="noreferrer" style="color: {{ ctaColor }}">{{ company }}</a>
-                                    {{else}}
-                                    <span>&nbsp;&bull;&nbsp;{{ company }}</span>
-                                    {{/if}}
+                                    <%if (role) { %>
+                                        &nbsp;&bull;&nbsp;
+                                    <% } %>
+                                    <%if (companyWebsite) { %>
+                                    <a href="<%= companyWebsite %>" target="_blank" rel="noreferrer" style="color: <%= ctaColor %>"><%= company %></a>
+                                    <% } else { %>
+                                    <span><%= company %></span>
+                                    <% } %>
                                 </p>
-                                {{/if}}
+                                <% } %>
                               </span>
                             </td>
                             
-                            {{!-- Vertical Delimiter --}}
-                            <td width="30">
-                                <div style="width:30px"></div>
-                            </td>
-                            <td color="{{ ctaColor }}" direction="vertical" width="1" height="auto" style="width:1px;border-bottom:none;border-left:1px solid {{ ctaColor }}"></td>
-                            <td width="30">
-                                <div style="width:30px"></div>
-                            </td>
-                            
+                            <% if (phoneNumber || email || website) { %>
+                            <!-- Vertical Delimiter -->
+                            <td width="30"><div style="width:30px"></div></td>
+                            <td color="<%= ctaColor %>" direction="vertical" width="1" height="auto" style="width:1px;border-bottom:none;border-left:1px solid <%= ctaColor %>"></td>
+                            <td width="30"><div style="width:30px"></div></td>
+                            <% } %>
                             <td>
                                 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                                     <tbody>
-                                        {{#if phoneNumber }}
+                                        <%if (phoneNumber) {  %>
                                         <tr height="25" style="vertical-align:middle">
                                             <td width="30" style="vertical-align:middle">
                                                 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                                                     <tbody>
                                                         <tr>
                                                             <td style="vertical-align:bottom">
-                                                                <span width="11" color="{{ ctaColor }}" style="color: {{ ctaColor }}">
+                                                                <span width="11" color="<%= ctaColor %>" style="color: <%= ctaColor %>">
                                                                     <img
                                                                         src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
-                                                                        color="{{ ctaColor }}"
+                                                                        color="<%= ctaColor %>"
                                                                         alt="phonenumber"
                                                                         width="13"
-                                                                        style="display: block;background-color:{{ ctaColor }};"
+                                                                        style="display: block;background-color:<%= ctaColor %>;"
                                                                     />
                                                                 </span>
                                                             </td>
@@ -71,26 +70,26 @@
                                                 </table>
                                             </td>
                                             <td style="padding:0;color:#000">
-                                                <a href="tel:{{ phoneNumber }}" color="#000000" style="text-decoration:none;color:#000;font-size:12px">
-                                                    <span>{{ phoneNumber }}</span>
+                                                <a href="tel:<%= phoneNumber %>" color="#000000" style="text-decoration:none;color:#000;font-size:12px">
+                                                    <span><%= phoneNumber %></span>
                                                 </a>
                                             </td>
                                         </tr>
-                                        {{/if}}
-                                        {{#if email }}
+                                        <% } %>
+                                        <%if (email) {  %>
                                         <tr height="25" style="vertical-align:middle">
                                             <td width="30" style="vertical-align:middle">
                                                 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                                                     <tbody>
                                                         <tr>
                                                             <td style="vertical-align:bottom">
-                                                                <span width="11" color="{{ ctaColor }}" style="color: {{ ctaColor }}">
+                                                                <span width="11" color="<%= ctaColor %>" style="color: <%= ctaColor %>">
                                                                     <img
                                                                         src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
-                                                                        color="{{ ctaColor }}"
+                                                                        color="<%= ctaColor %>"
                                                                         alt="email"
                                                                         width="13"
-                                                                        style="display: block;background-color:{{ ctaColor }};"
+                                                                        style="display: block;background-color:<%= ctaColor %>;"
                                                                     />
                                                                 </span>
                                                             </td>
@@ -99,26 +98,26 @@
                                                 </table>
                                             </td>
                                             <td style="padding:0">
-                                                <a href="mailto:{{ email }}" color="#000000" style="text-decoration:none;color:#000;font-size:12px">
-                                                    <span>{{ email }}</span>
+                                                <a href="mailto:<%= email %>" color="#000000" style="text-decoration:none;color:#000;font-size:12px">
+                                                    <span><%= email %></span>
                                                 </a>
                                             </td>
                                         </tr>
-                                        {{/if}}
-                                        {{#if website }}
+                                        <% } %>
+                                        <%if (website) {  %>
                                         <tr height="25" style="vertical-align:middle">
                                             <td width="30" style="vertical-align:middle">
                                                 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                                                     <tbody>
                                                         <tr>
                                                             <td style="vertical-align:bottom">
-                                                                <span width="11" color="{{ ctaColor }}" style="color: {{ ctaColor }}">
+                                                                <span width="11" color="<%= ctaColor %>" style="color: <%= ctaColor %>">
                                                                     <img
                                                                         src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
-                                                                        color="{{ ctaColor }}"
+                                                                        color="<%= ctaColor %>"
                                                                         alt="website"
                                                                         width="13"
-                                                                        style="display: block;background-color:{{ ctaColor }};"
+                                                                        style="display: block;background-color:<%= ctaColor %>;"
                                                                     />
                                                                 </span>
                                                             </td>
@@ -127,12 +126,12 @@
                                                 </table>
                                             </td>
                                             <td style="padding:0;">
-                                                <a href="{{ website }}" target="_blank" color="#000000" style="text-decoration:none;color:#000;font-size:12px">
-                                                    <span>{{ website }}</span>
+                                                <a href="<%= website %>" target="_blank" color="#000000" style="text-decoration:none;color:#000;font-size:12px">
+                                                    <span><%= website %></span>
                                                 </a>
                                             </td>
                                         </tr>
-                                        {{/if}}
+                                        <% } %>
                                     </tbody>
                                 </table>
                             </td>
@@ -142,7 +141,8 @@
             </td>
         </tr>
 
-        {{!-- Horizontal Delimiter --}}
+        <!-- Horizontal Delimiter -->
+        <%if (companyLogo || facebook || twitter || linkedin || instagram) { %>
         <tr>
             <td>
                 <table cellpadding="0" cellspacing="0" style="width:100%;vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
@@ -151,77 +151,78 @@
                             <td height="30"></td>
                         </tr>
                         <tr>
-                            <td color="{{ ctaColor }}" direction="horizontal" width="auto" height="1" style="width:100%;border-bottom:1px solid {{ ctaColor }};border-left:none;display:block"></td>
+                            <td color="<%= ctaColor %>" direction="horizontal" width="auto" height="1" style="width:100%;border-bottom:1px solid <%= ctaColor %>;border-left:none;display:block"></td>
                         </tr>
                         <tr>
-                            <td height="{{#if companyLogo }}20{{else}}30{{/if}}"></td>
+                            <td height="<%if (companyLogo) { %> 20 <% } else { %> 30 <% } %>"></td>
                         </tr>
                     </tbody>
                 </table>
             </td>
         </tr>
+        <% } %>
 
-        {{!-- Social media --}}
+        <!-- Social media -->
         <tr>
             <td>
                 <table cellpadding="0" cellspacing="0" style="width:100%;vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                     <tbody>
                         <tr>
-                            {{#if companyLogo }}
+                            <%if (companyLogo) {  %>
                             <td style="vertical-align: top">
-                                {{#if companyWebsite }}
-                                <a href="{{ companyWebsite }}" target="_blank" rel="noreferrer">
-                                    <img src="{{ companyLogo }}" role="presentation" width="130" style="display: inline-block; max-width: 130px">
+                                <%if (companyWebsite) {  %>
+                                <a href="<%= companyWebsite %>" target="_blank" rel="noreferrer">
+                                    <img src="<%= companyLogo %>" role="presentation" width="130" style="display: inline-block; max-width: 130px">
                                 </a>
-                                {{else}}
-                                <img src="{{ companyLogo }}" role="presentation" width="130" style="display: inline-block; max-width: 130px">
-                                {{/if}}
+                                <% } else { %>
+                                <img src="<%= companyLogo %>" role="presentation" width="130" style="display: inline-block; max-width: 130px">
+                                <% } %>
                             </td>
-                            {{/if}}
-                            <td style="text-align:right;vertical-align:{{#if companyLogo }}middle{{else}}top{{/if}}">
+                            <% } %>
+                            <td style="text-align:right;vertical-align:<%if (companyLogo) { %>middle <% } else { %> top <% } %>">
                                 <table cellpadding="0" cellspacing="0" style="display:inline-block;vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                                     <tbody>
                                         <tr style="text-align:right">
-                                            {{#if facebook }}
+                                            <%if (facebook) {  %>
                                             <td>
-                                                <a href="https://facebook.com/{{ facebook }}" color="{{ ctaColor }}" style="display:inline-block;padding:0;background-color:{{ ctaColor }}" target="_blank">
-                                                    <img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/facebook-icon-2x.png" alt="facebook" color="{{ ctaColor }}" height="24" style="background-color:{{ ctaColor }};max-width:135px;display:block">
+                                                <a href="https://facebook.com/<%= facebook %>" color="<%= ctaColor %>" style="display:inline-block;padding:0;background-color:<%= ctaColor %>" target="_blank">
+                                                    <img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/facebook-icon-2x.png" alt="facebook" color="<%= ctaColor %>" height="24" style="background-color:<%= ctaColor %>;max-width:135px;display:block">
                                                 </a>
                                             </td>
                                             <td width="5">
                                                 <div></div>
                                             </td>
-                                            {{/if}}
-                                            {{#if twitter }}
+                                            <% } %>
+                                            <%if (twitter) {  %>
                                             <td>
-                                                <a href="https://twitter.com/{{ twitter }}" color="{{ ctaColor }}" style="display:inline-block;padding:0;background-color:{{ ctaColor }}" target="_blank">
-                                                    <img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/twitter-icon-2x.png" alt="twitter" color="{{ ctaColor }}" height="24" style="background-color:{{ ctaColor }};max-width:135px;display:block">
+                                                <a href="https://twitter.com/<%= twitter %>" color="<%= ctaColor %>" style="display:inline-block;padding:0;background-color:<%= ctaColor %>" target="_blank">
+                                                    <img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/twitter-icon-2x.png" alt="twitter" color="<%= ctaColor %>" height="24" style="background-color:<%= ctaColor %>;max-width:135px;display:block">
                                                 </a>
                                             </td>
                                             <td width="5">
                                                 <div></div>
                                             </td>
-                                            {{/if}}
-                                            {{#if linkedin }}
+                                            <% } %>
+                                            <%if (linkedin) {  %>
                                             <td>
-                                                <a href="https://linkedin.com/in/{{ linkedin }}" color="{{ ctaColor }}" style="display:inline-block;padding:0;background-color:{{ ctaColor }}" target="_blank">
-                                                    <img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/linkedin-icon-2x.png" alt="linkedin" color="{{ ctaColor }}" height="24" style="background-color:{{ ctaColor }};max-width:135px;display:block">
+                                                <a href="https://linkedin.com/in/<%= linkedin %>" color="<%= ctaColor %>" style="display:inline-block;padding:0;background-color:<%= ctaColor %>" target="_blank">
+                                                    <img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/linkedin-icon-2x.png" alt="linkedin" color="<%= ctaColor %>" height="24" style="background-color:<%= ctaColor %>;max-width:135px;display:block">
                                                 </a>
                                             </td>
                                             <td width="5">
                                                 <div></div>
                                             </td>
-                                            {{/if}}
-                                            {{#if instagram }}
+                                            <% } %>
+                                            <%if (instagram) {  %>
                                             <td>
-                                                <a href="https://instagram.com/{{ instagram }}" color="{{ ctaColor }}" style="display:inline-block;padding:0;background-color:{{ ctaColor }}" target="_blank">
-                                                    <img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/instagram-icon-2x.png" alt="instagram" color="{{ ctaColor }}" height="24" style="background-color:{{ ctaColor }};max-width:135px;display:block">
+                                                <a href="https://instagram.com/<%= instagram %>" color="<%= ctaColor %>" style="display:inline-block;padding:0;background-color:<%= ctaColor %>" target="_blank">
+                                                    <img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/instagram-icon-2x.png" alt="instagram" color="<%= ctaColor %>" height="24" style="background-color:<%= ctaColor %>;max-width:135px;display:block">
                                                 </a>
                                             </td>
                                             <td width="5">
                                                 <div></div>
                                             </td>
-                                            {{/if}}
+                                            <% } %>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -233,4 +234,3 @@
         </tr>
     </tbody>
 </table>
-{{/minify}}

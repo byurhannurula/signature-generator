@@ -6,6 +6,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   errors?: any;
   title?: string;
+  prefix?: string | undefined;
   className?: string;
   disabled?: boolean;
   autoComplete?: string;
@@ -17,5 +18,6 @@ export const defaultProps = {
   type: 'text',
   errors: {},
   icon: '',
+
   iconColor: 'currentColor',
 };
