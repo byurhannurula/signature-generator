@@ -5,13 +5,21 @@
                 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                     <tbody>
                         <tr>
-                            <%if (profilePicture) {  %>
+                            <%if (profilePicture) { %>
                             <td width="100" style="vertical-align:middle">
-                              <span style="margin-right:20px;display:block">
-                                <img src="<%= profilePicture %>" role="presentation" width="100" style="max-width:100px;width:100px;height:100px;border-radius:200px;object-fit:cover;">
-                              </span>
+                                <span style="margin-right:20px;display:block">
+                                    <img src="<%= profilePicture %>" role="presentation" width="100" style="max-width:100px;width:100px;height:100px;border-radius:200px;object-fit:cover;">
+                                </span>
                             </td>
                             <% } %>
+                            <% if (profilePicture == '' && gender != '') { %>
+                            <td width="100" style="vertical-align:middle">
+                                <span style="margin-right:20px;display:block">
+                                    <img src="https://drive.google.com/uc?export=view&id=<%= gender == 'woman' ? '1bl5EpmvKIUoKJR4szgCb1UfocDWJhzQh' : '1fZW0Qy1NS5eqgL5aSADAGyT8RqyYCAXl' %>" role="presentation" width="100" style="max-width:100px;width:100px;height:100px;border-radius:200px;object-fit:cover;">
+                                </span>
+                            </td>
+                            <% } %>
+
                             <td>
                               <%if (fullName) { %>
                               <h2 color="#000000" style="margin:0;font-size:16px;color:#000;font-weight:700;vertical-align: middle;">
@@ -39,12 +47,13 @@
                               </span>
                             </td>
                             
-                            <% if (phoneNumber || email || website) { %>
                             <!-- Vertical Delimiter -->
+                            <% if (phoneNumber || email || website) { %>
                             <td width="30"><div style="width:30px"></div></td>
                             <td color="<%= ctaColor %>" direction="vertical" width="1" height="auto" style="width:1px;border-bottom:none;border-left:1px solid <%= ctaColor %>"></td>
                             <td width="30"><div style="width:30px"></div></td>
                             <% } %>
+
                             <td>
                                 <table cellpadding="0" cellspacing="0" style="vertical-align:middle;font-size:medium;font-family:Inter,system-ui,-apple-system,Roboto,Helvetica Neue,Arial,sans-serif">
                                     <tbody>

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 
+import Code from '@/components/code';
 import { defaultValues } from '@/utils';
 import FormFields from '@/components/form-fields';
-import Code from '@/components/code';
+import { ConfettiWrapper } from '@/components/copy-button';
 
 const Home = () => {
-  const [template, setTemplate] = useState('');
+  const [template, setTemplate] = useState<string>('');
+  const [isCopied, setIsCopied] = useState<boolean>(false);
   const { register, control } = useForm({ defaultValues });
 
   const formValues = useWatch({ control });
@@ -29,15 +31,7 @@ const Home = () => {
           </p>
         </div>
 
-        <FormFields register={register} />
-
-        <button
-          type="button"
-          className="btn"
-          onClick={() => navigator.clipboard.writeText(template)}
-        >
-          Copy Code
-        </button>
+        <FormFields control={control} register={register} />
 
         <footer className="flex flex-col pt-8">
           <p className="text-gray-600">
@@ -67,7 +61,12 @@ const Home = () => {
 
       <div className="h-screen w-full bg-white">
         <div className="h-1/2 w-full overflow-y-auto">
-          <Code code={template} language="html" />
+          <Code
+            code={template}
+            isCopied={isCopied}
+            setIsCopied={setIsCopied}
+            language="html"
+          />
         </div>
 
         <iframe
@@ -76,6 +75,8 @@ const Home = () => {
           srcDoc={template}
         />
       </div>
+
+      <ConfettiWrapper isCopied={isCopied} />
     </div>
   );
 };

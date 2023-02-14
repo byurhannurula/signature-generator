@@ -1,6 +1,8 @@
-import { Input } from '@/components/common';
+import { Controller } from 'react-hook-form';
 
-const FormFields = ({ register }) => {
+import { Input, Select } from '@/components/common';
+
+const FormFields = ({ register, control }) => {
   return (
     <form className="flex flex-col gap-y-6">
       <h3 className="mt-2 -mb-2 font-medium">Personal Info</h3>
@@ -34,6 +36,23 @@ const FormFields = ({ register }) => {
         {...register('email')}
       />
       <Input type="url" label="Personal Website" {...register('website')} />
+
+      <Controller
+        name="gender"
+        control={control}
+        defaultValue=""
+        render={({ field }) => (
+          <Select
+            options={[
+              { value: '', label: '--' },
+              { value: 'man', label: 'Man' },
+              { value: 'woman', label: 'Woman' },
+            ]}
+            label="Gender (Used for placeholder avatars)"
+            {...field}
+          />
+        )}
+      />
 
       <Input
         type="url"

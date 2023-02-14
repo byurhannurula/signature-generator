@@ -17,10 +17,11 @@ module.exports = {
     es2021: true,
   },
   rules: {
+    'no-console': 'off',
     'no-underscore-dangle': 'off',
 
     // REACT
-    'no-console': 'off',
+    'react/display-name': 'off',
     'react/function-component-definition': [
       2,
       {

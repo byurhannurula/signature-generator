@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import { forwardRef } from 'react';
 import { ErrorMessage } from '@hookform/error-message';
 
