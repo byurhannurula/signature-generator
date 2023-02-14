@@ -1,4 +1,3 @@
-// import handlebars from 'handlebars';
 import ejs from 'ejs';
 import { readFileSync } from 'fs';
 import MinifyHTML from 'html-minifier';
@@ -27,7 +26,6 @@ function loadTemplate(tplName: string) {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const template = loadTemplate('recheck');
-  // const html = handlebars.compile(template)(JSON.parse(req.body));
   const html = ejs.render(template, JSON.parse(req.body));
 
   res.status(200).json({ data: minify(html) });
