@@ -58,7 +58,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           id={props.name}
           {...props}
           ref={ref}
-          className={cn('field', props.className)}
+          className={cn('field placeholder-red-500', props.className)}
         />
       )}
     </div>

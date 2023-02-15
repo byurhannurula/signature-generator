@@ -18,6 +18,5 @@ export const defaultProps = {
   type: 'text',
   errors: {},
   icon: '',
-
   iconColor: 'currentColor',
 };

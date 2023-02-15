@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 
-import { Input, Select } from '@/components/common';
+import { Input, Label, Select } from '@/components/common';
 
 const FormFields = ({ register, control }) => {
   return (
@@ -32,10 +32,20 @@ const FormFields = ({ register, control }) => {
       <Input
         type="email"
         label="Email Address"
-        placeholder="janesmith@acme.com"
+        placeholder="johndoe@acme.com"
         {...register('email')}
       />
-      <Input type="url" label="Personal Website" {...register('website')} />
+      <Input
+        type="url"
+        label="Personal Website"
+        placeholder="https://johndoe.com"
+        {...register('website')}
+      />
+      <Input
+        label="Personal LinkedIn"
+        placeholder="https://linkedin.com"
+        {...register('personalLinkedin')}
+      />
 
       <Controller
         name="gender"
@@ -44,7 +54,7 @@ const FormFields = ({ register, control }) => {
         render={({ field }) => (
           <Select
             options={[
-              { value: '', label: '--' },
+              { value: '', label: 'Select gender' },
               { value: 'man', label: 'Man' },
               { value: 'woman', label: 'Woman' },
             ]}
@@ -57,6 +67,7 @@ const FormFields = ({ register, control }) => {
       <Input
         type="url"
         label="Profile Picture"
+        placeholder="https://example.com/images/myphoto.png"
         {...register('profilePicture')}
       />
 
@@ -72,33 +83,36 @@ const FormFields = ({ register, control }) => {
         placeholder="https://acme.com"
         {...register('companyWebsite')}
       />
-      <Input type="url" label="Company Logo" {...register('companyLogo')} />
-
-      <h3 className="mt-2 -mb-2 font-medium">Social Media</h3>
+      <Input
+        type="url"
+        label="Company Logo"
+        placeholder="https://example.com/images/myphoto.png"
+        {...register('companyLogo')}
+      />
 
       <Input
-        prefix="https://twitter.com/"
         label="Twitter"
+        placeholder="https://twitter.com"
         {...register('twitter')}
       />
       <Input
-        prefix="https://facebook.com/"
         label="Facebook"
+        placeholder="https://facebook.com"
         {...register('facebook')}
       />
       <Input
-        prefix="https://linkedin.com/in/"
         label="LinkedIn"
+        placeholder="https://linkedin.com"
         {...register('linkedin')}
       />
       <Input
-        prefix="https://instagram.com/"
         label="Instagram"
+        placeholder="https://instagram.com"
         {...register('instagram')}
       />
 
-      <h3 className="mt-2 -mb-2 font-medium">CTA Color</h3>
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-col">
+        <Label label="Main Color" />
         <input
           type="color"
           className="h-12 w-full rounded-md p-1"
