@@ -6,8 +6,24 @@ import { defaultValues } from '@/utils';
 import FormFields from '@/components/form-fields';
 import { ConfettiWrapper } from '@/components/copy-button';
 
-const Home = () => {
-  const [template, setTemplate] = useState<string>('');
+export async function getServerSideProps() {
+  const formTemplateCodeRespose = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/reload`,
+    {
+      method: 'POST',
+      body: JSON.stringify(defaultValues),
+    },
+  );
+
+  const templateCode = await formTemplateCodeRespose.json();
+
+  return {
+    props: { code: templateCode.data }, // will be passed to the page component as props
+  };
+}
+
+const Home = ({ code }) => {
+  const [template, setTemplate] = useState<string>(code || '');
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const { register, control } = useForm({ defaultValues });
 

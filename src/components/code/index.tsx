@@ -14,6 +14,7 @@ const Code = ({ code, language, isCopied, setIsCopied }) => {
           style={{ ...style, paddingRight: '64px' }}
         >
           <Button
+            disabled={isCopied}
             onClick={() => {
               navigator.clipboard.writeText(code);
               setIsCopied(true);
